@@ -1,8 +1,12 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
+const flash = require('express-flash')
+const session = require('express-session')
+
 
 const routes = require('./routes')()
+
 
 const app = express()
 
@@ -23,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 //route
-app.get("/", routes.expense);
+app.get("/", routes.expenses);
 
 const PORT = process.env.PORT || 4080
 
