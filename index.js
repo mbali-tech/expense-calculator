@@ -9,7 +9,7 @@ const app = express()
 // initialise the database connection
 const pgPromise = require('pg-promise')({})
 const db = pgPromise({
- connectionString:process.env.DATABASE_URL || 'postgres://postgres:2007121214@localhost:5432/expenses', 
+ connectionString:'postgres://hoacyeok:vvxbC49XksekmPLjg9A549CpH-rvqGxR@raja.db.elephantsql.com/hoacyeok', 
   ssl: {
     rejectUnauthorized: false
  }

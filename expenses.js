@@ -24,11 +24,11 @@ module.exports = (db) => {
       }
   
       const categoryId = async (category) => {
-        let category = await db.oneOrNone("select * from category where name = $1",
+        let categoryy = await db.oneOrNone("select * from category where name = $1",
          [category]
         );
         if(user != null){
-          return category.id
+          return categoryy.id
         }
       } 
   
