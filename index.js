@@ -28,7 +28,8 @@ const routes = require('./routes')(expenses)
 //route
 app.get("/", routes.home);
 app.post("/expenses", routes.addExpenses);
-app.get("/names", routes.uniqueNames)
+app.get("/names", routes.uniqueNames);
+app.get("/enteredExpenses/:name", routes.getExpenses);
 
 const PORT = process.env.PORT || 4080
 

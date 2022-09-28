@@ -1,0 +1,20 @@
+<table border="1">
+    <tr>
+        <th>category</th>
+        <th>date</th>
+        <th>amount</th>
+    </tr>
+    {{#each data}}
+    <tr>
+        <td>
+            {{this.name}}
+        </td>
+        <td>
+            {{this.date}}
+        </td>
+        <td>
+            {{this.amount}}
+        </td>
+    </tr>
+    {{/each}}
+</table>

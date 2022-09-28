@@ -5,10 +5,10 @@ module.exports = (expenses) => {
     }
 
     const addExpenses = async (req, res) => {
-        let name = req.params;
-        let category = req.body;
-        let date = req.body;
-        let amount = req.body;
+        let name = req.body.userName;
+        let category = req.body.category;
+        let date = req.body.day;
+        let amount = req.body.amount;
 
         await expenses.setName(name);
 
@@ -16,10 +16,19 @@ module.exports = (expenses) => {
         let categoriesId = await expenses.categoryId(category);
 
         await expenses.setExpenses(userId, categoriesId, amount, date)
+        res.redirect('back')
+    }
+
+    const getExpenses = async (req, res) => {
+        let name = req.params.name;
+        let data = await expenses.returnExpenses(name);
+        res.render('expenses', {
+            data
+        })
     }
 
     const uniqueNames = async (req, res) => {
-        let uniqueNames = await expenses.nameList()
+        let uniqueNames = await expenses.namesList()
         res.render('enteredExpenses', {
             uniqueNames
         })
@@ -28,6 +37,7 @@ module.exports = (expenses) => {
     return {
         home,
         addExpenses,
+        getExpenses,
         uniqueNames
     }
 }

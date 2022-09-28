@@ -1,19 +1,22 @@
 <h1>ADD EXPENSES</h1>
 <form action="/expenses" method="post">
-            <div class="space">
-                <input name="userName" type="text" id="inputBox" class="small-input" maxlength="10" placeholder="Enter name">
-                <input name="amount" type="text" id="t-amount" class="small-input" maxlength="10" placeholder="Enter amount(R)">
-                <input name="day" type="date" placeholder="date of expense" >
-            </div>
-            <div class="radio-container">
+    <div class="space">
+        <input name="userName" type="text" id="inputBox" class="small-input" maxlength="10" placeholder="Enter name">
+        <input name="amount" type="text" id="t-amount" class="small-input" maxlength="10" placeholder="Enter amount(R)">
+        <input name="day" type="date" placeholder="date of expense">
+    </div>
+    <div class="radio-container">
         <input type="radio" name="category" value="Transport" />
         <label for="transport">Transport</label>
-        <input type="radio" name="category" value="communication" />
+        <input type="radio" name="category" value="Communication" />
         <label for="communication">communication</label>
-        <input type="radio" name="category" value="food" />
+        <input type="radio" name="category" value="Food" />
         <label for="food">Food</label>
-        <input type="radio" name="category" value="toiletries" />
+        <input type="radio" name="category" value="Toiletries" />
         <label for="toiletries">toiletries</label>
-      </div>
-            <button id="addButton" type="submit">Add</button>
-        </form>
+    </div>
+    <button id="addButton" type="submit">Add</button>
+</form>
+
+
+<a href="/names">Show names</a>

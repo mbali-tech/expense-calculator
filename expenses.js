@@ -2,11 +2,11 @@ module.exports = (db) => {
 
   const setName =  async(name) =>{
       name = name.toLowerCase().trim()
-        let counter = await db.oneOrNone("select count(*) from users where name = $1",
+        let counter = await db.oneOrNone("select count(*) from users where firstname = $1",
           [name]
         );
         if (counter.count ==0) {
-          await db.none("insert into users(name) values($1)", [name]);
+          await db.none("insert into users(firstname) values($1)", [name]);
           
         } else if (counter.count > 0) {
           return;
@@ -15,7 +15,7 @@ module.exports = (db) => {
   
       const userId = async (name) => {
         name = name.toLowerCase().trim()
-        let user = await db.oneOrNone("select * from users where name = $1", 
+        let user = await db.oneOrNone("select * from users where firstname = $1", 
           [name]
         );
         if(user != null){
@@ -27,13 +27,13 @@ module.exports = (db) => {
         let categoryy = await db.oneOrNone("select * from category where name = $1",
          [category]
         );
-        if(user != null){
+        if(categoryy != null){
           return categoryy.id
         }
       } 
   
       const namesList = async () => {
-          let list = await db.manyOrNone("select distinct name from users")
+          let list = await db.manyOrNone("select distinct firstname from users")
           return list
       }
       
@@ -48,11 +48,11 @@ module.exports = (db) => {
               "insert into expenses (users_id, category_id, date, amount) values ($1, $2, $3, $4)", [userId, categoriesId, date, amount])
       }
       const returnExpenses = async (name) => {
-          const joinedResults = await db.manyOrNone("select * from users join expenses on user_id = category join expenses on category_id = expenses.users_id where expenses.categories_id = $1", [name])
+          const joinedResults = await db.manyOrNone("select * from expenses join users on users.id = users_id join category on category.id = expenses.category_id where users.firstname = $1", [name])
           return joinedResults
       }
   
-      {
+      return {
       
           setName,
           setExpenses,
