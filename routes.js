@@ -1,7 +1,14 @@
 module.exports = (expenses) => {
 
-const expense = async (req, res) => {
-    
-    
-}
+    const addExpenses = async (req, res) => {
+
+
+        let name = req.params;
+        let category = req.body;
+        let date = req.body;
+        let amount = req.body;
+    }
+
+
+
 }

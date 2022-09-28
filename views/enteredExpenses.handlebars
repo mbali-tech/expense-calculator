@@ -1,0 +1,8 @@
+<h1>Personal Expenses</h1>
+ <div class="row">
+     {{#each uniqueNames}}
+        <ul>
+            <li><a href="/enteredExpenses/{{name}}">{{name}}</a></li>
+        </ul>
+    {{/each}}
+ </div>
