@@ -1,4 +1,4 @@
-create table user (
+create table users (
     id serial primary key,
     name text not null
    
@@ -15,6 +15,7 @@ create table category (
 create table expenses (
     id SERIAL PRIMARY KEY,
     amount text not null,
+    date TIMESTAMP NOT NULL,
     users_id INTEGER NOT NULL,
     category_id INTEGER NOT NULL,
     FOREIGN KEY(users_id) REFERENCES users(id),
@@ -22,4 +23,4 @@ create table expenses (
     
 );
 
-insert into category (name) values ('food'),('transport'),('Communication'),('Toiletries');
+insert into category (name) values ('Food'),('Transport'),('Communication'),('Toiletries');

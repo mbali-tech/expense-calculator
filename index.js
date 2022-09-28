@@ -4,10 +4,6 @@ const bodyParser = require('body-parser')
 const flash = require('express-flash')
 const session = require('express-session')
 
-
-const routes = require('./routes')()
-
-
 const app = express()
 
 // initialise the database connection
@@ -26,8 +22,13 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+const expenses = require('./expenses')(db)
+const routes = require('./routes')(expenses)
+
 //route
-app.get("/", routes.expenses);
+app.get("/", routes.home);
+app.post("/expenses", routes.addExpenses);
+app.get("/names", routes.uniqueNames)
 
 const PORT = process.env.PORT || 4080
 
